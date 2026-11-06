@@ -1,0 +1,205 @@
+@import './variables.css';
+
+/* Global Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dashboard);
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Base Fade In Animation */
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Brand Logo Styles */
+.brand-logo-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: height 0.15s ease;
+}
+
+@media (max-width: 640px) {
+  .brand-logo-medium .brand-logo-img {
+    height: 36px !important;
+  }
+  .brand-logo-large .brand-logo-img {
+    height: 46px !important;
+  }
+  .brand-logo-compact .brand-logo-img {
+    height: 32px !important;
+  }
+  .brand-logo-small .brand-logo-img {
+    height: 28px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-logo-medium .brand-logo-img {
+    height: 30px !important;
+  }
+  .brand-logo-compact .brand-logo-img {
+    height: 28px !important;
+  }
+}
+
+/* ==========================================================================
+   Shared Modal System: Viewport Centering & Internal Scroll
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 2000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-height: min(90vh, calc(100dvh - 32px)) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+.modal-header {
+  flex-shrink: 0 !important;
+}
+
+.modal-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Navbar Team Chat Icon Button (Matches ArshithConnect Chat Theme) */
+.navbar-team-chat-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  background-color: #F0E9FF;
+  color: #713DE5;
+  border: 1.5px solid #E9E1F5;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.navbar-team-chat-btn:hover {
+  background: linear-gradient(135deg, #6739E8 0%, #A43CE0 100%);
+  color: #ffffff;
+  border-color: #713DE5;
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 4px 12px rgba(113, 61, 229, 0.3);
+}
+
+.navbar-team-chat-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.navbar-team-chat-btn .navbar-chat-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #F04491;
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  border-radius: 999px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 0 0 2px #ffffff;
+  pointer-events: none;
+  animation: badge-pulse 2s infinite ease-in-out;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+
